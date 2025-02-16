@@ -56,7 +56,6 @@ app.post('/submit' , async(req , res)=>{
     res.redirect('/'); 
 });
 
-
 app.listen(PORT , ()=>{
     console.log(`Server running on http://localhost:${PORT}`);
 });
