@@ -56,6 +56,11 @@ app.post('/submit' , async(req , res)=>{
     res.redirect('/'); 
 });
 
+app.post('/delete/:txtfile' , async(req , res)=>{
+    const filename = req.params.txtfile;
+    await fs.unlink(`./notes/${filename}.txt`);
+    res.redirect('/');
+});
 app.listen(PORT , ()=>{
     console.log(`Server running on http://localhost:${PORT}`);
 });
