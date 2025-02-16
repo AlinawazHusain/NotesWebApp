@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Annonymous BC Web App</title>
+    <title>Notes Web App</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -94,7 +94,7 @@
     </style>
 </head>
 <body>
-    <h1>Annonymous BC</h1>
+    <h1>Notes Web App</h1>
     <br>
 
     <div class="form-div">
@@ -102,7 +102,7 @@
             <label for="Title">Enter Title: </label>
             <input type="text" id="Title" name="Title">
             <br><br>
-            <label for="note">Enter Thought:</label>
+            <label for="note">Enter Note:</label>
             <textarea id="note" name="note"></textarea>
             <br><br>
             <input type="submit" value="Submit">
@@ -115,7 +115,11 @@
             <% data.forEach((noteObj, index) => { %>
                 <% Object.entries(noteObj).forEach(([key, value]) => { %>
                     <ul>
-                        <li><strong><%= key %>:</strong> <%= value %></li>
+                        <li><strong><%= key %>:</strong> <%= value %> 
+                            <form action="/delete/<%= key%>" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </li>
                     </ul>
                 <% }); %>
             <% }); %>
