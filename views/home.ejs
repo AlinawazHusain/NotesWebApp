@@ -127,5 +127,32 @@
             <p>No data available</p>
         <% } %>
     </div>
+
+    <script>
+        let idleTimeout;
+
+        // Function to reload the page
+        function reloadPage() {
+            location.reload();
+        }
+
+        // Reset the idle timeout whenever the user interacts with the form
+        function resetIdleTimer() {
+            clearTimeout(idleTimeout);
+            idleTimeout = setTimeout(reloadPage, 5000); // Reset the timer to 3 seconds
+        }
+
+        // Add event listeners for user interaction (typing, clicking)
+        const titleInput = document.getElementById('Title');
+        const noteInput = document.getElementById('note');
+        const submitButton = document.querySelector('input[type="submit"]');
+
+        titleInput.addEventListener('input', resetIdleTimer); // Reset timer when typing in Title
+        noteInput.addEventListener('input', resetIdleTimer); // Reset timer when typing in Note
+        submitButton.addEventListener('click', resetIdleTimer); // Reset timer when clicking Submit
+
+        // Initially start the idle timer
+        resetIdleTimer();
+    </script>
 </body>
 </html>
